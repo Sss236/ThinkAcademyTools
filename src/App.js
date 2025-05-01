@@ -1,3 +1,5 @@
+// Optimized and updated JSON logic with enriched cutoff/birthdate range documentation
+
 import React, { useState } from 'react';
 import schools from './data/schools.json';
 import { Card, CardBody, CardHeader } from "@nextui-org/react";
@@ -5,7 +7,6 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { Button, TextField } from '@mui/material';
-import dayjs from 'dayjs'; 
 import {
   Select,
   MenuItem,
@@ -16,10 +17,17 @@ import {
 function AppContent() {
   const [birthDate, setBirthDate] = useState(null);
   const [results, setResults] = useState([]);
+  const [expandedSchool, setExpandedSchool] = useState(null);
   const currentYear = new Date().getFullYear();
   const [targetYear, setTargetYear] = useState(currentYear + 1);
 
-  const REFERENCE_YEAR = 2025; // 假设 birthdateRanges 是基于 2025 入学年
+  const REFERENCE_YEAR = 2025;
+
+  const getCutoffForProgram = (school, program) => {
+    const dateStr = (school.cutoffDates?.[program] || school.cutoffDate || "09-01");
+    const [month, day] = dateStr.split("-").map(Number);
+    return new Date(targetYear, month - 1, day);
+  };
 
   const handleCheck = () => {
     if (!birthDate) return;
@@ -44,18 +52,12 @@ function AppContent() {
           }
         }
       } else {
-        const getCutoffForProgram = (school, program) => {
-          const dateStr = (school.cutoffDates?.[program] || school.cutoffDate || "09-01");
-          const [month, day] = dateStr.split("-").map(Number);
-          return new Date(targetYear, month - 1, day);
-        };
-        
-        
         for (const program of school.programs) {
           const requiredAge = school.ageRequirements?.[program];
           if (requiredAge == null) continue;
-          
+
           const cutoff = getCutoffForProgram(school, program);
+
           const birthAnniversary = new Date(birth);
           birthAnniversary.setFullYear(birth.getFullYear() + requiredAge);
 
@@ -71,7 +73,7 @@ function AppContent() {
       if (matchedPrograms.length > 0) {
         filtered.push({
           school,
-          matchedPrograms
+          matchedPrograms: [...new Set(matchedPrograms)]
         });
       }
     }
@@ -91,7 +93,7 @@ function AppContent() {
       <Card
         isBlurred
         shadow="lg"
-        style={{ maxWidth: "720px", width: "100%", padding: "2rem", borderRadius: "1.5rem" }}
+        style={{ maxWidth: "720px", width: "100%", padding: "2rem", borderRadius: "1.5rem"}}
       >
         <CardHeader style={{ flexDirection: "column", alignItems: "center", marginBottom: "1rem" }}>
           <h1 style={{ display: 'flex', flexDirection: "column", alignItems: "center", fontSize: "2rem", fontWeight: "bold", color: "#1e293b", marginBottom: "0.5rem" }}>
@@ -158,12 +160,37 @@ function AppContent() {
               }}
             >
               {results.map(({ school, matchedPrograms }) => (
-                <Card key={school.name} shadow="sm" style={{ backgroundColor: "#f8fafc", padding: "1rem" }}>
+                <Card
+                  key={school.name}
+                  isPressable
+                  shadow="sm"
+                  onClick={() => setExpandedSchool(expandedSchool === school.name ? null : school.name)}
+                  style={{
+                    backgroundColor: "#f8fafc",
+                    padding: "1rem",
+                    cursor: "pointer",
+                    transition: "all 0.2s ease-in-out",
+                    boxShadow: expandedSchool === school.name ? "0 0 50px #c7d2fe" : undefined,
+                    outline: "none",
+                    border: "none"
+                  }}
+                >
                   <CardHeader style={{ fontWeight: "bold", fontSize: "1rem", color: "#3730a3" }}>
                     {school.name}
                   </CardHeader>
                   <CardBody style={{ fontSize: "0.9rem", color: "#334155" }}>
                     <div><strong>Matched Programs for {targetYear}:</strong> {matchedPrograms.join(", ")}</div>
+                    {school.note && (
+                          <div style={{ marginTop: "0.5rem", fontStyle: "italic", fontSize: "0.5rem", color: "#475569" }}>
+                            {school.note}
+                          </div>
+                    )}
+                    {expandedSchool === school.name && (
+                      <>
+                        <div><strong>Address:</strong> {school.address || "N/A"}</div>
+                        <div><strong>Website:</strong> <a href={school.website} target="_blank" rel="noreferrer">{school.website}</a></div>
+                      </>
+                    )}
                   </CardBody>
                 </Card>
               ))}

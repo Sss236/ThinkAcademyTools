@@ -66,7 +66,8 @@
     "description": "St. Andrew\u2019s Episcopal School is a private, coeducational school in Saratoga, CA, serving students from preschool through grade 8.",
     "address": "13601 Saratoga Ave, Saratoga, CA 95070",
     "zip": "95070",
-    "website": "https://www.st-andrews.org/"
+    "website": "https://www.st-andrews.org/",
+    "note": "Cut-off date: September 1"
   },
   {
     "name": "Phillips Brooks School",
@@ -84,7 +85,8 @@
     "description": "Phillips Brooks School is a private, coeducational day school in Menlo Park, CA, serving students from preschool through grade 5.",
     "address": "2245 Avy Ave, Menlo Park, CA 94025",
     "zip": "94025",
-    "website": "https://www.phillipsbrooks.org/"
+    "website": "https://www.phillipsbrooks.org/",
+    "note": "Cut-off date: September 1"
   },
   {
     "name": "Synapse School",
@@ -100,7 +102,8 @@
     "description": "Synapse School is a private, coeducational school in Menlo Park, CA, offering a project-based curriculum from transitional kindergarten through grade 8.",
     "address": "3375 Edison Way, Menlo Park, CA 94025",
     "zip": "94025",
-    "website": "https://www.synapseschool.org/"
+    "website": "https://www.synapseschool.org/",
+    "note": "Cut-off date: September 1"
   },
   {
     "name": "The Nueva School",
@@ -120,7 +123,7 @@
     "address": "6565 Skyline Blvd, Hillsborough, CA 94010",
     "zip": "94010",
     "website": "https://www.nuevaschool.org/",
-    "note": "2025: PreK R1: must turn 4 by Mar 9; PreK R2: must turn 4 by May 26. PreK after May 27 ineligible. K must be 5 by Sep 1."
+    "note": "2025 entry: PreK Round1: must turn 4 by Mar 9; PreK Round2: must turn 4 by May 26. PreK after May 27 ineligible. K must be 5 by Sep 1."
   },
   {
     "name": "Stratford School",
@@ -164,7 +167,8 @@
     "description": "Trinity School is a private, coeducational school in Menlo Park, CA, serving students from preschool through grade 5.",
     "address": "2650 Sand Hill Rd, Menlo Park, CA 94025",
     "zip": "94025",
-    "website": "https://www.trinity-mp.org/"
+    "website": "https://www.trinity-mp.org/",
+    "note": "Cut-off date: September 1"
   },
   {
     "name": "Monticello Academy",

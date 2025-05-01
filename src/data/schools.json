@@ -1,0 +1,330 @@
+[
+  {
+    "name": "Harker School",
+    "programs": [
+      "TK",
+      "K"
+    ],
+    "birthdateRanges": [
+      {
+        "grade": "K",
+        "from": "2019-07-01",
+        "to": "2020-06-30"
+      },
+      {
+        "grade": "K",
+        "from": "2020-07-01",
+        "to": "2020-11-30"
+      },
+      {
+        "grade": "TK",
+        "from": "2020-07-01",
+        "to": "2020-11-30"
+      }
+    ],
+    "ageRequirements": {
+      "TK": 4,
+      "K": 5
+    },
+    "description": "The Harker School is a private, coeducational, nonsectarian school in San Jose, CA, offering education from preschool through grade 12.",
+    "address": "500 Saratoga Ave, San Jose, CA 95129",
+    "zip": "95129",
+    "website": "https://www.harker.org/",
+    "note": "2025 entry: Children born 2019-07-01 to 2020-06-30 must apply for K; 2020-07-01 to 2020-11-30 can apply for TK or K (not both)."
+  },
+  {
+    "name": "BASIS Independent Silicon Valley",
+    "programs": [
+      "TK",
+      "K"
+    ],
+    "ageRequirements": {
+      "TK": 4,
+      "K": 5
+    },
+    "description": "BASIS Independent Silicon Valley is a private school in Sunnyvale, CA, offering a rigorous curriculum from transitional kindergarten through grade 12.",
+    "address": "1500 Partridge Ave, Sunnyvale, CA 94087",
+    "zip": "94087",
+    "website": "https://basisindependent.com/schools/ca/silicon-valley/",
+    "note": "TK: must be 4 by May 31. K: must be 5 by Sep 1.",
+    "cutoffDates": {
+      "TK": "05-31",
+      "K": "09-01"
+    }
+  },
+  {
+    "name": "St. Andrew\u2019s Episcopal School",
+    "programs": [
+      "PreK",
+      "K"
+    ],
+    "cutoffDate": "09-01",
+    "ageRequirements": {
+      "PreK": 4,
+      "K": 5
+    },
+    "description": "St. Andrew\u2019s Episcopal School is a private, coeducational school in Saratoga, CA, serving students from preschool through grade 8.",
+    "address": "13601 Saratoga Ave, Saratoga, CA 95070",
+    "zip": "95070",
+    "website": "https://www.st-andrews.org/"
+  },
+  {
+    "name": "Phillips Brooks School",
+    "programs": [
+      "Preschool",
+      "PreK",
+      "K"
+    ],
+    "cutoffDate": "09-01",
+    "ageRequirements": {
+      "Preschool": 3,
+      "PreK": 4,
+      "K": 5
+    },
+    "description": "Phillips Brooks School is a private, coeducational day school in Menlo Park, CA, serving students from preschool through grade 5.",
+    "address": "2245 Avy Ave, Menlo Park, CA 94025",
+    "zip": "94025",
+    "website": "https://www.phillipsbrooks.org/"
+  },
+  {
+    "name": "Synapse School",
+    "programs": [
+      "TK",
+      "K"
+    ],
+    "cutoffDate": "09-01",
+    "ageRequirements": {
+      "TK": 4,
+      "K": 5
+    },
+    "description": "Synapse School is a private, coeducational school in Menlo Park, CA, offering a project-based curriculum from transitional kindergarten through grade 8.",
+    "address": "3375 Edison Way, Menlo Park, CA 94025",
+    "zip": "94025",
+    "website": "https://www.synapseschool.org/"
+  },
+  {
+    "name": "The Nueva School",
+    "programs": [
+      "PreK",
+      "K"
+    ],
+    "ageRequirements": {
+      "PreK": 4,
+      "K": 5
+    },
+    "cutoffDates": {
+      "TK": "05-26",
+      "K": "09-01"
+    },
+    "description": "The Nueva School is a private, coeducational school in Hillsborough, CA, serving gifted students from pre-kindergarten through grade 12.",
+    "address": "6565 Skyline Blvd, Hillsborough, CA 94010",
+    "zip": "94010",
+    "website": "https://www.nuevaschool.org/",
+    "note": "2025: PreK R1: must turn 4 by Mar 9; PreK R2: must turn 4 by May 26. PreK after May 27 ineligible. K must be 5 by Sep 1."
+  },
+  {
+    "name": "Stratford School",
+    "programs": [
+      "Preschool",
+      "PreK",
+      "TK",
+      "K"
+    ],
+    "ageRequirements": {
+      "Preschool": 2.5,
+      "PreK": 3,
+      "TK": 4,
+      "K": 5
+    },
+    "description": "Stratford School is a private, coeducational school with multiple campuses in the Bay Area, offering programs from preschool through grade 8.",
+    "address": "6670 San Anselmo Way, San Jose, CA 95119",
+    "zip": "95119",
+    "website": "https://www.stratfordschools.com/",
+    "note": "Preschool: 2.5+ years old and toilet-trained. PreK/K: must be 4/5 by Dec 2. TK: age 5 between Sep 2\u2013Feb 2.",
+    "cutoffDates": {
+      "Preschool": "09-01",
+      "PreK": "12-02",
+      "K": "12-02",
+      "TK": "02-02"
+    }
+  },
+  {
+    "name": "Trinity School",
+    "programs": [
+      "Preschool",
+      "TK",
+      "K"
+    ],
+    "cutoffDate": "09-01",
+    "ageRequirements": {
+      "Preschool": 3,
+      "TK": 4,
+      "K": 5
+    },
+    "description": "Trinity School is a private, coeducational school in Menlo Park, CA, serving students from preschool through grade 5.",
+    "address": "2650 Sand Hill Rd, Menlo Park, CA 94025",
+    "zip": "94025",
+    "website": "https://www.trinity-mp.org/"
+  },
+  {
+    "name": "Monticello Academy",
+    "programs": [
+      "Preschool",
+      "PreK",
+      "K"
+    ],
+    "cutoffDate": "09-01",
+    "ageRequirements": {
+      "Preschool": 3,
+      "PreK": 4,
+      "K": 5
+    },
+    "description": "Monticello Academy is a private, coeducational school in Santa Clara, CA, offering programs from preschool through grade 8.",
+    "address": "3345 Lochinvar Ave, Santa Clara, CA 95051",
+    "zip": "95051",
+    "website": "https://www.monticelloacademy.org/"
+  },
+  {
+    "name": "The Carey School",
+    "programs": [
+      "Preschool",
+      "PreK",
+      "K"
+    ],
+    "cutoffDate": "09-01",
+    "ageRequirements": {
+      "Preschool": 3,
+      "PreK": 4,
+      "K": 5
+    },
+    "description": "The Carey School is a private, coeducational school in San Mateo, CA, serving students from preschool through grade 5.",
+    "address": "One Carey School Lane, San Mateo, CA 94403",
+    "zip": "94403",
+    "website": "https://www.careyschool.org/"
+  },
+  {
+    "name": "Tessellations School",
+    "programs": [
+      "Preschool",
+      "K"
+    ],
+    "cutoffDate": "08-15",
+    "ageRequirements": {
+      "Preschool": 3,
+      "K": 5
+    },
+    "description": "Tessellations School is a private, coeducational school in Cupertino, CA, offering a project-based curriculum for gifted students from preschool through grade 8.",
+    "address": "1170 Yorkshire Dr, Cupertino, CA 95014",
+    "zip": "95014",
+    "website": "https://tessellations.school/"
+  },
+  {
+    "name": "Sacred Heart Schools, Atherton",
+    "programs": [
+      "JK",
+      "K"
+    ],
+    "cutoffDate": "09-01",
+    "ageRequirements": {
+      "JK": 4,
+      "K": 5
+    },
+    "description": "Sacred Heart Schools, Atherton is a private, Roman Catholic, coeducational school in Atherton, CA, serving students from preschool through grade 12.",
+    "address": "150 Valparaiso Ave, Atherton, CA 94027",
+    "zip": "94027",
+    "website": "https://www.shschools.org/"
+  },
+  {
+    "name": "Serendipity School",
+    "programs": [
+      "Preschool",
+      "K"
+    ],
+    "cutoffDate": "09-01",
+    "ageRequirements": {
+      "Preschool": 3,
+      "K": 5
+    },
+    "description": "Serendipity School is a private, coeducational school in Belmont, CA, offering programs from preschool through grade 5.",
+    "address": "2820 Ponce Ave, Belmont, CA 94002",
+    "zip": "94002",
+    "website": "https://www.serendipityschool.com/"
+  },
+  {
+    "name": "Challenger School",
+    "programs": [
+      "Preschool",
+      "K"
+    ],
+    "ageRequirements": {
+      "Preschool": 2.75,
+      "K": 5
+    },
+    "description": "Challenger School is a private, coeducational school with multiple campuses in the Bay Area, offering programs from preschool through grade 8.",
+    "address": "711 East Gish Rd, San Jose, CA 95112",
+    "zip": "95112",
+    "website": "https://www.challengerschool.com/",
+    "note": "Children are eligible for preschool at 2y9m. K applicants must be 5 by December 2 (California rule).",
+    "cutoffDates": {
+      "Preschool": "09-01",
+      "K": "12-02"
+    }
+  },
+  {
+    "name": "Keys School",
+    "programs": [
+      "K"
+    ],
+    "cutoffDate": "09-01",
+    "ageRequirements": {
+      "K": 5
+    },
+    "description": "Keys School is a private, coeducational school in Palo Alto, CA, serving students from kindergarten through grade 8.",
+    "address": "2890 Middlefield Rd, Palo Alto, CA 94306",
+    "zip": "94306",
+    "website": "https://www.keysschool.org/"
+  },
+  {
+    "name": "Helios School",
+    "programs": [
+      "K"
+    ],
+    "cutoffDate": "09-01",
+    "ageRequirements": {
+      "K": 5
+    },
+    "description": "Helios School is a private K\u20138 school in Sunnyvale, CA, designed specifically for gifted learners. It offers project-based, expeditionary learning with a strong emphasis on outdoor education and social-emotional development.",
+    "address": "597 Central Avenue, Sunnyvale, CA 94086",
+    "zip": "94086",
+    "website": "https://www.heliosschool.org/"
+  },
+  {
+    "name": "Pinewood School",
+    "programs": [
+      "K"
+    ],
+    "cutoffDate": "09-01",
+    "ageRequirements": {
+      "K": 5
+    },
+    "description": "Pinewood School is a private, non-sectarian college preparatory school in Los Altos, CA, serving students from kindergarten through grade 12. It is known for its strong programs in performing arts and mathematics.",
+    "address": "477 Fremont Avenue, Los Altos, CA 94024",
+    "zip": "94024",
+    "website": "https://www.pinewood.edu/"
+  },
+  {
+    "name": "Valley Christian Schools",
+    "programs": [
+      "K"
+    ],
+    "cutoffDate": "10-01",
+    "ageRequirements": {
+      "K": 5
+    },
+    "description": "Valley Christian Schools is a private, non-denominational Christian school in San Jose, CA, offering a K\u201312 college preparatory education. It emphasizes academic excellence, Christian values, and leadership development.",
+    "address": "1450 Leigh Avenue, San Jose, CA 95125",
+    "zip": "95125",
+    "website": "https://www.vcs.net/",
+    "note": "K applicants must be 5 years old on or before October 1 of the enrollment year."
+  }
+]

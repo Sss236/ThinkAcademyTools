@@ -1,273 +1,191 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
+import schools from './data/schools.json';
+import { Card, CardBody, CardHeader } from "@nextui-org/react";
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { Button, TextField } from '@mui/material';
+import dayjs from 'dayjs'; 
+import {
+  Select,
+  MenuItem,
+  FormControl,
+  InputLabel,
+} from '@mui/material';
 
-const users = [
-    {
-      "id": 1,
-      "name": "Emily Chen",
-      "age": 28,
-      "occupation": "Software Engineer"
-    },
-    {
-      "id": 2,
-      "name": "Ryan Thompson",
-      "age": 32,
-      "occupation": "Marketing Manager"
-    },
-    {
-      "id": 3,
-      "name": "Sophia Patel",
-      "age": 25,
-      "occupation": "Data Analyst"
-    },
-    {
-      "id": 4,
-      "name": "Michael Lee",
-      "age": 41,
-      "occupation": "CEO"
-    },
-    {
-      "id": 5,
-      "name": "Olivia Brown",
-      "age": 29,
-      "occupation": "Graphic Designer"
-    },
-    {
-      "id": 6,
-      "name": "Alexander Hall",
-      "age": 38,
-      "occupation": "Sales Representative"
-    },
-    {
-      "id": 7,
-      "name": "Isabella Davis",
-      "age": 26,
-      "occupation": "Teacher"
-    },
-    {
-      "id": 8,
-      "name": "Ethan White",
-      "age": 35,
-      "occupation": "Lawyer"
-    },
-    {
-      "id": 9,
-      "name": "Lily Tran",
-      "age": 30,
-      "occupation": "Nurse"
-    },
-    {
-      "id": 10,
-      "name": "Julian Sanchez",
-      "age": 39,
-      "occupation": "Engineer"
-    },
-    {
-      "id": 11,
-      "name": "Ava Martin",
-      "age": 27,
-      "occupation": "Journalist"
-    },
-    {
-      "id": 12,
-      "name": "Benjamin Walker",
-      "age": 42,
-      "occupation": "Doctor"
-    },
-    {
-      "id": 13,
-      "name": "Charlotte Brooks",
-      "age": 31,
-      "occupation": "HR Manager"
-    },
-    {
-      "id": 14,
-      "name": "Gabriel Harris",
-      "age": 36,
-      "occupation": "IT Consultant"
-    },
-    {
-      "id": 15,
-      "name": "Hannah Taylor",
-      "age": 24,
-      "occupation": "Student"
-    },
-    {
-      "id": 16,
-      "name": "Jackson Brown",
-      "age": 40,
-      "occupation": "Business Owner"
-    },
-    {
-      "id": 17,
-      "name": "Kayla Lewis",
-      "age": 33,
-      "occupation": "Event Planner"
-    },
-    {
-      "id": 18,
-      "name": "Logan Mitchell",
-      "age": 37,
-      "occupation": "Architect"
-    },
-    {
-      "id": 19,
-      "name": "Mia Garcia",
-      "age": 29,
-      "occupation": "Artist"
-    },
-    {
-      "id": 20,
-      "name": "Natalie Hall",
-      "age": 34,
-      "occupation": "Teacher"
-    },
-    {
-      "id": 21,
-      "name": "Oliver Patel",
-      "age": 38,
-      "occupation": "Software Developer"
-    },
-    {
-      "id": 22,
-      "name": "Penelope Martin",
-      "age": 26,
-      "occupation": "Writer"
-    },
-    {
-      "id": 23,
-      "name": "Quinn Lee",
-      "age": 35,
-      "occupation": "Entrepreneur"
-    },
-    {
-      "id": 24,
-      "name": "Rachel Kim",
-      "age": 30,
-      "occupation": "Dentist"
-    },
-    {
-      "id": 25,
-      "name": "Samuel Jackson",
-      "age": 42,
-      "occupation": "Lawyer"
-    },
-    {
-      "id": 26,
-      "name": "Tessa Hall",
-      "age": 28,
-      "occupation": "Graphic Designer"
-    },
-    {
-      "id": 27,
-      "name": "Uma Patel",
-      "age": 39,
-      "occupation": "Marketing Manager"
-    },
-    {
-      "id": 28,
-      "name": "Vincent Brooks",
-      "age": 36,
-      "occupation": "IT Consultant"
-    },
-    {
-      "id": 29,
-      "name": "Walter White",
-      "age": 41,
-      "occupation": "Engineer"
-    },
-    {
-      "id": 30,
-      "name": "Xavier Sanchez",
-      "age": 33,
-      "occupation": "Sales Representative"
-    },
-    {
-      "id": 31,
-      "name": "Yvonne Martin",
-      "age": 29,
-      "occupation": "Teacher"
-    },
-    {
-      "id": 32,
-      "name": "Zoe Lee",
-      "age": 27,
-      "occupation": "Data Analyst"
-    },
-    {
-      "id": 33,
-      "name": "Abigail Brown",
-      "age": 34,
-      "occupation": "Nurse"
-    },
-    {
-      "id": 34,
-      "name": "Caleb Harris",
-      "age": 38,
-      "occupation": "Business Owner"
-    },
-    {
-      "id": 35,
-      "name": "Diana Taylor",
-      "age": 31,
-      "occupation": "Event Planner"
-    },
-    {
-      "id": 36,
-      "name": "Eleanor Walker",
-      "age": 40,
-      "occupation": "CEO"
+function AppContent() {
+  const [birthDate, setBirthDate] = useState(null);
+  const [results, setResults] = useState([]);
+  const currentYear = new Date().getFullYear();
+  const [targetYear, setTargetYear] = useState(currentYear + 1);
+
+  const REFERENCE_YEAR = 2025; // 假设 birthdateRanges 是基于 2025 入学年
+
+  const handleCheck = () => {
+    if (!birthDate) return;
+
+    const birth = birthDate.toDate();
+    const filtered = [];
+
+    for (const school of schools) {
+      const matchedPrograms = [];
+
+      if (school.birthdateRanges) {
+        const shiftYears = targetYear - REFERENCE_YEAR;
+
+        for (const range of school.birthdateRanges) {
+          const from = new Date(range.from);
+          const to = new Date(range.to);
+          from.setFullYear(from.getFullYear() + shiftYears);
+          to.setFullYear(to.getFullYear() + shiftYears);
+
+          if (birth >= from && birth <= to) {
+            matchedPrograms.push(range.grade);
+          }
+        }
+      } else {
+        const getCutoffForProgram = (school, program) => {
+          const dateStr = (school.cutoffDates?.[program] || school.cutoffDate || "09-01");
+          const [month, day] = dateStr.split("-").map(Number);
+          return new Date(targetYear, month - 1, day);
+        };
+        
+        
+        for (const program of school.programs) {
+          const requiredAge = school.ageRequirements?.[program];
+          if (requiredAge == null) continue;
+          
+          const cutoff = getCutoffForProgram(school, program);
+          const birthAnniversary = new Date(birth);
+          birthAnniversary.setFullYear(birth.getFullYear() + requiredAge);
+
+          const ageAtCutoff = (cutoff - birth) / (1000 * 60 * 60 * 24 * 365.25);
+          const tooOld = ageAtCutoff - requiredAge > 1.2;
+
+          if (birthAnniversary <= cutoff && !tooOld) {
+            matchedPrograms.push(program);
+          }
+        }
+      }
+
+      if (matchedPrograms.length > 0) {
+        filtered.push({
+          school,
+          matchedPrograms
+        });
+      }
     }
-  ]
 
-export default function App() {
-  return(
-    <Pagination users={users} />
+    setResults(filtered);
+  };
+
+  return (
+    <div style={{
+      minHeight: "100vh",
+      background: "linear-gradient(to bottom right, #ffe4e6, #e0e7ff, #e0f2fe)",
+      padding: "3rem 1.5rem",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "flex-start"
+    }}>
+      <Card
+        isBlurred
+        shadow="lg"
+        style={{ maxWidth: "720px", width: "100%", padding: "2rem", borderRadius: "1.5rem" }}
+      >
+        <CardHeader style={{ flexDirection: "column", alignItems: "center", marginBottom: "1rem" }}>
+          <h1 style={{ display: 'flex', flexDirection: "column", alignItems: "center", fontSize: "2rem", fontWeight: "bold", color: "#1e293b", marginBottom: "0.5rem" }}>
+            Bay Area School Finder
+          </h1>
+          <p style={{ color: "#475569", fontSize: "0.95rem", textAlign: "center" }}>
+            Help your family plan ahead with confidence.
+          </p>
+        </CardHeader>
+
+        <CardBody style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <div
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                gap: "1rem",
+                justifyContent: "space-between",
+                marginBottom: "1.5rem"
+              }}
+            >
+              <FormControl style={{ minWidth: 150, flex: "1 1 200px" }}>
+                <InputLabel id="target-year-label">Target Year</InputLabel>
+                <Select
+                  labelId="target-year-label"
+                  id="target-year"
+                  value={targetYear}
+                  label="Target Year"
+                  onChange={(e) => setTargetYear(parseInt(e.target.value))}
+                >
+                  <MenuItem value={currentYear}>{currentYear}</MenuItem>
+                  <MenuItem value={currentYear + 1}>{currentYear + 1}</MenuItem>
+                  <MenuItem value={currentYear + 2}>{currentYear + 2}</MenuItem>
+                </Select>
+              </FormControl>
+
+              <DatePicker
+                label="Child's Birthday"
+                value={birthDate}
+                onChange={(newValue) => setBirthDate(newValue)}
+                renderInput={(params) => (
+                  <TextField {...params} style={{ flex: "1 1 200px", minWidth: 150 }} />
+                )}
+              />
+
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={handleCheck}
+                style={{ flex: "1 1 150px", minWidth: 120, height: 56 }}
+              >
+                Submit
+              </Button>
+            </div>
+          </LocalizationProvider>
+
+          {results.length > 0 ? (
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+                gap: "1.5rem",
+                marginTop: "1rem"
+              }}
+            >
+              {results.map(({ school, matchedPrograms }) => (
+                <Card key={school.name} shadow="sm" style={{ backgroundColor: "#f8fafc", padding: "1rem" }}>
+                  <CardHeader style={{ fontWeight: "bold", fontSize: "1rem", color: "#3730a3" }}>
+                    {school.name}
+                  </CardHeader>
+                  <CardBody style={{ fontSize: "0.9rem", color: "#334155" }}>
+                    <div><strong>Matched Programs for {targetYear}:</strong> {matchedPrograms.join(", ")}</div>
+                  </CardBody>
+                </Card>
+              ))}
+            </div>
+          ) : (
+            <p style={{
+              textAlign: "center",
+              marginTop: "1rem",
+              fontSize: "0.9rem",
+              color: "#64748b"
+            }}>
+              No schools matched this age. Please consult individual schools for more information.
+            </p>
+          )}
+        </CardBody>
+      </Card>
+    </div>
   );
 }
-const Pagination = ({users}) => {
-    const[numPerPage, setNumPerPage] = useState(10);
-    const[currentPage, setCurrentPage] = useState(1);
 
-    const columns = ["Id", "Name", "Age", "Occupation"];
-    return(
-        <div style={{margin: "50px"}}>
-            <table>
-                <tr>
-                    {columns.map(col => 
-                        <th>{col}</th>
-                    )}
-                </tr>
-                {users.slice((currentPage-1) * numPerPage, currentPage * numPerPage).map(((user, index) => 
-                    <tr key={index}>
-                        <td>{user.id}</td>
-                        <td>{user.name}</td>
-                        <td>{user.age}</td>
-                        <td>{user.occupation}</td>
-                    </tr>
-                ))}
-            </table>
-            
-            <div style={{display: 'flex', flexDirection:'row', justifyContent:'space-between'}}>
-                <label>
-                    Display 
-                    <select 
-                        value={numPerPage}
-                        onChange={e => setNumPerPage(e.target.value)}
-                    >
-                        <option value="10">10</option>
-                        <option value="20">20</option>
-                        <option value="50">50</option>
-                    </select>
-                     per page
-                </label>
-                <div>
-                    <button disabled={currentPage === 1} onClick={() => setCurrentPage(currentPage => currentPage - 1)}>prev</button>
-                    {currentPage}
-                    <button disabled={currentPage >= (users.length / numPerPage)} onClick={() => setCurrentPage(currentPage => currentPage + 1)}>next</button>
-                </div>
-            </div>
-        </div>
-    );
+export default function App() {
+  return (
+    <AppContent />
+  );
 }
-
-

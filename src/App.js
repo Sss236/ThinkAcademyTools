@@ -19,14 +19,14 @@ function AppContent() {
   const [results, setResults] = useState([]);
   const [expandedSchool, setExpandedSchool] = useState(null);
   const currentYear = new Date().getFullYear();
-  const [targetYear, setTargetYear] = useState(currentYear + 1);
+  const [entryYear, setEntryYear] = useState(currentYear + 1);
 
   const REFERENCE_YEAR = 2025;
 
   const getCutoffForProgram = (school, program) => {
     const dateStr = (school.cutoffDates?.[program] || school.cutoffDate || "09-01");
     const [month, day] = dateStr.split("-").map(Number);
-    return new Date(targetYear, month - 1, day);
+    return new Date(entryYear, month - 1, day);
   };
 
   const handleCheck = () => {
@@ -39,7 +39,7 @@ function AppContent() {
       const matchedPrograms = [];
 
       if (school.birthdateRanges) {
-        const shiftYears = targetYear - REFERENCE_YEAR;
+        const shiftYears = entryYear - REFERENCE_YEAR;
 
         for (const range of school.birthdateRanges) {
           const from = new Date(range.from);
@@ -116,13 +116,13 @@ function AppContent() {
               }}
             >
               <FormControl style={{ minWidth: 150, flex: "1 1 200px" }}>
-                <InputLabel id="target-year-label">Target Year</InputLabel>
+                <InputLabel id="entry-year-label">Entry Year</InputLabel>
                 <Select
-                  labelId="target-year-label"
-                  id="target-year"
-                  value={targetYear}
-                  label="Target Year"
-                  onChange={(e) => setTargetYear(parseInt(e.target.value))}
+                  labelId="entry-year-label"
+                  id="entry-year"
+                  value={entryYear}
+                  label="Entry Year"
+                  onChange={(e) => setEntryYear(parseInt(e.target.value))}
                 >
                   <MenuItem value={currentYear}>{currentYear}</MenuItem>
                   <MenuItem value={currentYear + 1}>{currentYear + 1}</MenuItem>
@@ -179,17 +179,17 @@ function AppContent() {
                     {school.name}
                   </CardHeader>
                   <CardBody style={{ fontSize: "0.9rem", color: "#334155" }}>
-                    <div><strong>Matched Programs for {targetYear}:</strong> {matchedPrograms.join(", ")}</div>
-                    {school.note && (
-                          <div style={{ marginTop: "0.5rem", fontStyle: "italic", fontSize: "0.5rem", color: "#475569" }}>
-                            {school.note}
+                    <div><strong>Matched Programs for {entryYear}:</strong> {matchedPrograms.join(", ")}</div>
+                    {school.note && expandedSchool !== school.name && (
+                          <div style={{ marginTop: "0.5rem", fontStyle: "italic", fontSize: "0.85rem", color: "#475569" }}>
+                            Cut Off Date:{school.note}
                           </div>
                     )}
                     {expandedSchool === school.name && (
-                      <>
+                      <div style={{ marginTop: "0.5rem"}}>
                         <div><strong>Address:</strong> {school.address || "N/A"}</div>
-                        <div><strong>Website:</strong> <a href={school.website} target="_blank" rel="noreferrer">{school.website}</a></div>
-                      </>
+                        <div><a href={school.website} target="_blank" rel="noreferrer">Official Website</a></div>
+                      </div>
                     )}
                   </CardBody>
                 </Card>

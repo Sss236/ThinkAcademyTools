@@ -1,1 +1,0 @@
-Welcome, this is Serena's personal website.

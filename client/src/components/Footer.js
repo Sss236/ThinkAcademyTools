@@ -9,6 +9,7 @@ export const Footer = () => {
       fontSize: "14px"
     }}>
       <div style={{ marginBottom: "10px" }}>
+        <Link to="/" style={{ margin: "0 10px" }}>Home</Link>
         <Link to="/about" style={{ margin: "0 10px" }}>About</Link>
         <Link to="/privacy-policy" style={{ margin: "0 10px" }}>Privacy Policy</Link>
         <Link to="/terms-of-service" style={{ margin: "0 10px" }}>Terms</Link>

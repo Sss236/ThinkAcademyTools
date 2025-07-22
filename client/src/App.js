@@ -9,7 +9,6 @@ import {FaqPage} from './pages/FaqPage';
 import { Footer } from './components/Footer';
 
 export default function App() {
-  console.log("Build version: 2025-07-21 22:48");
   return (
     <Router>
       <Routes>

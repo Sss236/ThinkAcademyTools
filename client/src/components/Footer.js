@@ -3,10 +3,9 @@ import { Link } from "react-router-dom";
 export const Footer = () => {
   return (
     <footer style={{
-      marginTop: "40px",
+      marginTop: "20px",
       padding: "20px",
       textAlign: "center",
-      backgroundColor: "#f5f5f5",
       fontSize: "14px"
     }}>
       <div style={{ marginBottom: "10px" }}>

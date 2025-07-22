@@ -6,7 +6,7 @@ import { PrivacyPolicyPage } from './pages/PrivacyPolicyPage';
 import {TermsPage} from './pages/TermsPage';
 import {ContactPage} from './pages/ContactPage';
 import {FaqPage} from './pages/FaqPage';
-
+import { Footer } from './components/Footer';
 
 export default function App() {
   return (
@@ -19,6 +19,7 @@ export default function App() {
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/faq" element={<FaqPage />} />
       </Routes>
+      <Footer />
     </Router>
   );
 }

@@ -23,7 +23,7 @@ export const HomePage = () => {
     if (!birthDate || !entryYear) return;
 
     try {
-      const response = await axios.post(`${process.env.REACT_APP_API_URL || 'http://localhost:3001'}/api/match-schools`, {
+      const response = await axios.post(`/api/match-schools`, {
         birthDate: birthDate.toDate(),
         entryYear: entryYear,
       });

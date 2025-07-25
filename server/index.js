@@ -63,5 +63,14 @@ app.post('/api/match-schools', (req, res) => {
   res.json(results);
 });
 
+const path = require('path');
+
+// 托管 React build 静态文件
+app.use(express.static(path.join(__dirname, '../client/build')));
+
+// 对非 API 路由返回 React index.html
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
+});
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => console.log(`School API server running on port ${PORT}`));

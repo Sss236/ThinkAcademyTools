@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Card, CardBody, CardHeader } from "@nextui-org/react";
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
@@ -37,7 +36,6 @@ export const HomePage = () => {
   return (
     <div style={{
       minHeight: "100vh",
-      // background: "linear-gradient(to bottom right, #ffe4e6, #e0e7ff, #e0f2fe)",
       padding: "3rem 1.5rem",
       display: "flex",
       justifyContent: "center",

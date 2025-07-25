@@ -1,0 +1,21 @@
+{
+  "name": "sss236.github.io",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "client": "npm --prefix client start",
+    "server": "node server/index.js",
+    "start": "node server/index.js",
+    "dev": "concurrently \"npm start --prefix client\" \"npm start --prefix server\"",
+    "build": "npm --prefix client run build",
+    "prod": "npm run build && pm2 start server/index.js --name school-api"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "concurrently": "^9.2.0"
+  }
+}

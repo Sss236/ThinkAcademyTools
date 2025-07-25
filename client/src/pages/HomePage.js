@@ -38,7 +38,7 @@ export const HomePage = () => {
     if (!birthDate || !entryYear) return;
 
     try {
-      const response = await safePost('/api/match-schools', {
+      const response = await safePost(`${process.env.REACT_APP_API_URL || '/api'}/match-schools`, {
         birthDate: birthDate.toDate(),
         entryYear: entryYear,
       });

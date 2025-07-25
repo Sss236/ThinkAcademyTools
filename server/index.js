@@ -3,7 +3,12 @@ const cors = require('cors');
 const app = express();
 const schools = require('./schools.json');
 
-app.use(cors());
+app.use(cors({
+  origin: [
+    "https://thinktools.help",
+    "https://thinktools.pages.dev"
+  ]
+}));
 app.use(express.json());
 
 const REFERENCE_YEAR = 2025;

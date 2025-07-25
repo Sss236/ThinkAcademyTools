@@ -19,11 +19,26 @@ export const HomePage = () => {
   const currentYear = new Date().getFullYear();
   const [entryYear, setEntryYear] = useState(currentYear + 1);
 
+  async function safePost(url, data, retries = 3) {
+    for (let i = 0; i < retries; i++) {
+      try {
+        return await axios.post(url, data);
+      } catch (error) {
+        if (i < retries - 1) {
+          console.warn(`请求失败，${i + 1} 秒后重试...`);
+          await new Promise(r => setTimeout(r, 1000));
+        } else {
+          throw error;
+        }
+      }
+    }
+  }
+
   const handleCheck = async () => {
     if (!birthDate || !entryYear) return;
 
     try {
-      const response = await axios.post('/api/match-schools', {
+      const response = await safePost('/api/match-schools', {
         birthDate: birthDate.toDate(),
         entryYear: entryYear,
       });

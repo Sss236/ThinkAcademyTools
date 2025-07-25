@@ -14,7 +14,10 @@ function getCutoffForProgram(school, program, entryYear) {
   return new Date(entryYear, month - 1, day);
 }
 
+app.get('/ping', (req, res) => res.send('OK'));
+
 app.post('/api/match-schools', (req, res) => {
+
   const { birthDate, entryYear } = req.body;
   const birth = new Date(birthDate);
   const results = [];
